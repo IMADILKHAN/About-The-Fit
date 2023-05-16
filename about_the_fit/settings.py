@@ -44,6 +44,7 @@ INSTALLED_APPS = [
      'api',
      'api.category',
      'api.product',
+     'api.user',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOW_ALL_ORIGINS = True
+AUTH_USER_MODEL = "user.CustomUser"
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
