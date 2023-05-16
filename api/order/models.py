@@ -3,7 +3,7 @@ from api.user.models import CustomUser
 from api.product.models import Product
 # Create your models here.
 
-class Order(models.Models):
+class Order(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     product_names = models.CharField(max_length=1000)
     total_products = models.CharField(max_length=100,default = 0)
