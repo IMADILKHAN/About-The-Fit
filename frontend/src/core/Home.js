@@ -38,7 +38,6 @@ export default function Home(){
                     return(
                         <div key={index}>
                             <Card product={product}/>
-
                         </div>
                     )
                 })}

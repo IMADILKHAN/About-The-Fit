@@ -28,13 +28,12 @@ export default function Card({
     removeFromCart=false
 }){
 
-    let url = 'product/'+product.id
-    console.log(url);
+
     return(
         <div>
             {/*Link for the product*/}
 
-            <Link to={`${url}`}>
+            <Link reloadDocument to={`/product/${product.id}`}>
             <div className="product-card">
                 <img src={product.image} width={250} height={250} className="product-image"/>
                 <p className="product-name">{product.name}</p>
