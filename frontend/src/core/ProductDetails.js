@@ -34,7 +34,7 @@ export default function ProductDetails(productId){
 
             <div className="product-detail-container">
                 <div className="image-container">
-                <img  width={450} height={450}  src={arr.product.image}/>
+                <img  width={450} height={500}  src={arr.product.image}/>
                 </div>
 
                 <div className="product-detail-desc">
