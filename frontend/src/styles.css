@@ -763,3 +763,37 @@ margin-top: 160px;
   margin: auto;
 }
 }
+
+
+
+
+/* SizeSelector.css */
+
+.size-selector {
+  margin-bottom: 20px;
+}
+
+.size-selector h3 {
+  display: inline-block;
+  font-size: 27px;
+  margin-right: 10px;
+}
+
+.size-selector select {
+  display: inline-block;
+  padding: 13px;
+  font-size: 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+}
+
+.size-selector select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.size-selector p {
+  font-size: 14px;
+  margin-top: 10px;
+}

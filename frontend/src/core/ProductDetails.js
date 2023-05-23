@@ -3,6 +3,7 @@ import {getProduct,getProducts} from "./helper/coreapicalls"
 import { useParams } from 'react-router';
 import { Link,Redirect } from "react-router-dom";
 import {AiOutlineMinus,AiOutlinePlus,AiFillStar,AiOutlineStar} from 'react-icons/ai';
+import SizeSelector from './SizeSelector';
 import Card from "./Card"
 
 
@@ -10,31 +11,48 @@ import Card from "./Card"
 export default function ProductDetails(productId){
     const { id } = useParams();
     const [product,setProduct] = useState([]);
+    const [imgSrc,setImgSrc] = useState();
+    let arr={product}
+    const products = Prodcut();
+    console.log("==============");
+    const images = arr.product.images;
     const loadAllProduct =() => {
         getProduct({id})
         .then((data)=>{
             if (data.error) {
                 console.log(data.error);
-                console.log(1234567);
             }
             else{
                 setProduct(data)
             }
         })
     }
+    let first_url = arr.product.image
 
 
     useEffect(()=>{
         loadAllProduct();
+        setImgSrc(first_url)
     },[])
-    let arr={product}
-    const products = Prodcut();
+    useEffect(()=>{
+    // setImgSrc(arr.product.image)
+    })
+
+
+    console.log("==============");
     return(
         <>
 
             <div className="product-detail-container">
-                <div className="image-container">
-                <img  width={450} height={500}  src={arr.product.image}/>
+                <div>
+                    <div className="image-container">
+                    <img  width={550} height={600}  src={imgSrc}/>
+                    </div>
+                    <div className="small-images-container">
+                    {images?.map((item,i)=>(
+                        <img src={item.image} className={item.image==imgSrc?'small-image selected-image':"small-image"} onMouseEnter={()=>setImgSrc(item.image)}/>
+                    ))}
+                    </div>
                 </div>
 
                 <div className="product-detail-desc">
@@ -62,10 +80,15 @@ export default function ProductDetails(productId){
                         </p>
                     </div>
 
+                    <SizeSelector />
+
+
                     <div className="buttons">
                         <button className="add-to-cart" onClick>Add To Cart</button>
                         <button className="buy-now" onClick>Buy Now</button>
+
                     </div>
+
 
                 </div>
             </div>
@@ -77,7 +100,7 @@ export default function ProductDetails(productId){
                     <div className="products-container">
                         {products.map((product,index)=>{
                             let url = '/product/'+product.id
-                            console.log(url);
+
                             return(
                                 <div key={index}>
                                     <Card product={product}/>
@@ -109,7 +132,7 @@ function Prodcut(){
         .then((data)=>{
             if (data.error) {
                 setError(data.error)
-                console.log(data.error);
+
             }
             else{
                 setProducts(data)
@@ -119,6 +142,6 @@ function Prodcut(){
     useEffect(()=>{
         loadAllProducts();
     },[])
-    console.log(products);
+
     return products
 }
