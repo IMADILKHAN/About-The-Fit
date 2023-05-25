@@ -4,8 +4,8 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineLeft,AiOutlineShopping}  from "rea
 import {TiDeleteOutline} from "react-icons/"
 import {loadCart} from "./helper/cartHelper"
 import CartCard from "./CartCard"
-
 import NavBar from "./NavBar"
+import PaymentB from "./PaymentB"
 
 
 
@@ -54,7 +54,15 @@ export default function Cart(){
                 {loadAllProducts(products)}
             </div>
             <div className="col-6">
-                {loadCheckout()}
+                {products.length>0?(
+                    <PaymentB
+                        products = {products}
+                        setReload = {setReload}
+                    />
+
+                ):(
+                    <h3>Add Items</h3>
+                )}
             </div>
 
             </div>
