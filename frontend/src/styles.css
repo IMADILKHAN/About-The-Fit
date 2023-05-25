@@ -420,7 +420,7 @@ padding: 30px 65px;
   display: flex;
  gap: 40px;
  margin: 40px;
- margin-top: 60px;
+ margin-top: 25px;
  color: #324d67;
 
 }
@@ -796,4 +796,13 @@ margin-top: 160px;
 .size-selector p {
   font-size: 14px;
   margin-top: 10px;
+}
+
+.login-page{
+    margin: 10%;
+}
+
+.navbar-nav li{
+    padding-left:30px;
+    margin-right: 100px;
 }

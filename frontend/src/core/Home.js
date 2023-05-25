@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import Base from "./Base"
 import Card from "./Card"
+import NavBar from "./NavBar"
+
 import ProductDetails from "./ProductDetails"
 import {getProducts} from "./helper/coreapicalls"
 
@@ -25,9 +27,8 @@ export default function Home(){
     },[])
     return(
         <>
+        <NavBar/>
         <Hero/>
-
-
             <div className="products-heading">
             <h3>Best Sellers</h3>
             <p>find variant of products</p>

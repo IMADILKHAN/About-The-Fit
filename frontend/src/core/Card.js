@@ -1,13 +1,12 @@
 import React from "react";
 import ImageHelper from './helper/imageHelper'
 import {API} from "../backend"
-import { Link,Redirect } from "react-router-dom";
-
-let isAuthenticated = true;
+import { Link } from "react-router-dom";
+import {isAuthenticated} from "../auth/helper"
 
 
 const addtoCart = ()=>{
-    if (isAuthenticated) {
+    if (isAuthenticated()) {
         console.log("Added to cart");
     }
     else {
@@ -32,7 +31,6 @@ export default function Card({
     return(
         <div>
             {/*Link for the product*/}
-
             <Link reloadDocument to={`/product/${product.id}`}>
             <div className="product-card">
                 <img src={product.image} width={250} height={250} className="product-image"/>

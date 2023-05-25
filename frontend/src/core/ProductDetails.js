@@ -4,11 +4,13 @@ import {addItemToCart,removeItemFromCart} from "./helper/cartHelper"
 import { useParams } from 'react-router';
 import { Link,Redirect } from "react-router-dom";
 import {AiOutlineMinus,AiOutlinePlus,AiFillStar,AiOutlineStar} from 'react-icons/ai';
+import {isAuthenticated} from "../auth/helper"
+
 import SizeSelector from './SizeSelector';
 import Card from "./Card"
+import NavBar from "./NavBar"
 
 
-let isAuthenticated = true;
 
 
 
@@ -45,7 +47,7 @@ export default function ProductDetails(productId){
     })
 
     const addtoCart = ()=>{
-        if (isAuthenticated) {
+        if (isAuthenticated()) {
             addItemToCart(product,()=>{})
             console.log("Added to cart");
         }
@@ -59,7 +61,7 @@ export default function ProductDetails(productId){
     console.log("==============");
     return(
         <>
-
+            <NavBar/>
             <div className="product-detail-container">
                 <div>
                     <div className="image-container">

@@ -1,11 +1,13 @@
 import React,{useState} from "react"
-import {Link} from 'react-router-dom'
+import {Link,redirect} from 'react-router-dom'
+import {signin,authenticate,isAuthenticated} from "../auth/helper"
+import NavBar from "../core/NavBar"
 
 const Signin = ()=>{
     const [values,setValues] = useState({
         name:"",
-        email:"",
-        password:"",
+        email:"blueaadil@gmail.com",
+        password:"123456",
         error:"",
         success:false,
         loading:false,
@@ -17,6 +19,50 @@ const Signin = ()=>{
         setValues({...values,error:false,[name]:event.target.value})
     }
 
+    const onSubmit = (event)=>{
+        event.preventDefault();
+        setValues({...values,error:false,loading:true})
+        signin({email,password})
+        .then((data)=>{
+            console.log("Data",data);
+            if (data.token) {
+
+
+                authenticate(data,()=>{
+                    console.log("tokken added");
+                    setValues({
+                        ...values,
+                        didRedirect:true,
+
+                    });
+
+                })
+            }
+            else {
+                setValues({
+                    ...values,
+                    loading:false,
+                })
+            }
+        })
+        .catch(err=> console.log(err))
+    }
+
+    const performRedirect = ()=>{
+        if (isAuthenticated()) {
+              window.location.href = 'http://localhost:3000/';
+        }
+    }
+
+    const loadingMessage = ()=>{
+        return(
+            loading && (
+                <div className="alert alert-info">
+                    <h3>Loading....</h3>
+                </div>
+            )
+        )
+    }
 
     const successMessage = ()=>{
         return (
@@ -53,7 +99,10 @@ const Signin = ()=>{
     const signInForm = ()=>{
         return (
             <div className="row">
-                <div className="col-md-5 offset-sm-3 text-left">
+
+                <div className="col-md-6 offset-sm-3 text-left">
+                <h3 className="text-center">Login</h3>
+
                     <form>
                         <div className="form-group">
                             <label className = "text-dark">Email</label>
@@ -72,8 +121,9 @@ const Signin = ()=>{
                                 onChange={handleChange("password")}
                                 type = "password"
                                 />
+                                <button onClick={onSubmit} className="btn btn-success offset-sm-2">Submit</button>
+
                         </div>
-                        <button onClick={()=>{}} className="btn btn-success btn-block">Submit</button>
                     </form>
                 </div>
             </div>
@@ -83,11 +133,14 @@ const Signin = ()=>{
 
     return (
         <div>
-            <h3 className="text-center">Welcome To Sigin Page</h3>
+        <NavBar/>
+            <div className="login-page">
+
+            {loadingMessage()}
             {signInForm()}
-            <p className="text-center">{JSON.stringify(values)}</p>
 
-
+            {performRedirect()}
+            </div>
         </div>
     )
 }

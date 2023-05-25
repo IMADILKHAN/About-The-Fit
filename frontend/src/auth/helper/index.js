@@ -18,7 +18,7 @@ export const signup = (user)=>{
     .catch(err=>console.log(err))
 };
 
-export const sigin = user=>{
+export const signin = user=>{
     const formData = new FormData();
     for (const name in user){
         formData.append(name,user[name])
@@ -26,9 +26,10 @@ export const sigin = user=>{
 
     return fetch(`${API}user/login/`,{
         method:"POST",
-        body:FormData
+        body:formData
     })
     .then(response=>{
+        console.log("success",response);
         return response.json();
     })
     .catch(err=>{console.log(err)})
@@ -37,7 +38,7 @@ export const sigin = user=>{
 
 export const authenticate = (data,next)=>{
     if (typeof window!==undefined){
-        localStorage.setItem("jwt",JSON.stringfiy(data));
+        localStorage.setItem("jwt",JSON.stringify(data));
         next();
     }
 }
