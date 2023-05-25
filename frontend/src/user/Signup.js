@@ -51,7 +51,7 @@ export default function Signup(){
                         className="alert alert-success"
                         style = {{display:success ? "" :"none"}}
                     >
-                        Signup Successful
+                        Signup Successful <Link to="/sigin"> login now</Link>
                     </div>
                 </div>
             </div>

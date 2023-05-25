@@ -6,7 +6,7 @@ import {isAuthenticated } from "./index"
 
 
 
-export default function privateRoutes({component: Component, ...rest}){
+export default function PrivateRoutes({component: Component, ...rest}){
     return (
   <Route
     {...rest}
