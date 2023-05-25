@@ -1,10 +1,16 @@
 import React,{useState,useEffect} from 'react'
 import {getProduct,getProducts} from "./helper/coreapicalls"
+import {addItemToCart,removeItemFromCart} from "./helper/cartHelper"
 import { useParams } from 'react-router';
 import { Link,Redirect } from "react-router-dom";
 import {AiOutlineMinus,AiOutlinePlus,AiFillStar,AiOutlineStar} from 'react-icons/ai';
 import SizeSelector from './SizeSelector';
 import Card from "./Card"
+
+
+let isAuthenticated = true;
+
+
 
 
 
@@ -37,6 +43,17 @@ export default function ProductDetails(productId){
     useEffect(()=>{
     // setImgSrc(arr.product.image)
     })
+
+    const addtoCart = ()=>{
+        if (isAuthenticated) {
+            addItemToCart(product,()=>{})
+            console.log("Added to cart");
+        }
+        else {
+            console.log("login first");
+        }
+    }
+
 
 
     console.log("==============");
@@ -84,8 +101,8 @@ export default function ProductDetails(productId){
 
 
                     <div className="buttons">
-                        <button className="add-to-cart" onClick>Add To Cart</button>
-                        <button className="buy-now" onClick>Buy Now</button>
+                        <button className="add-to-cart" onClick={addtoCart}>Add To Cart</button>
+                        <button className="buy-now" onClick={()=>{removeItemFromCart(arr.product.id)}}>Buy Now</button>
 
                     </div>
 

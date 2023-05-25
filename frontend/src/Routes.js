@@ -3,7 +3,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 import Home from "./core/Home"
 import ProductDetails from "./core/ProductDetails"
-
+import privateRoutes from "./auth/helper/PrivateRoutes";
 export default function Routees(){
     return(
 
