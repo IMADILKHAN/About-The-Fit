@@ -6,6 +6,10 @@ It covers following technical topics in 1 app:-
 3. Payment Gateway Integration with  `Braintree`
 4. Frontend consuming api with `React`
 
+
+ ![homePage](homePage.jpeg)
+ ![product_details](product_details.jpeg)
+
 <a name="start-locally"></a>
 ## Start Project locally
 
@@ -68,3 +72,4 @@ Here is a short table about which ressources exist and which method you can use 
       /category     |  [Y] |  [Y]  |   [N]   |   [N]  |   
 
 
+ ![cart](cart.jpeg)
