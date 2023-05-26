@@ -50,16 +50,17 @@ export default function Cart(){
             <NavBar/>
 
             <div className="row text-center">
-            <div className="col-6">
+            <div className="col-4">
                 {loadAllProducts(products)}
             </div>
-            <div className="col-6">
+            <div className="col-3">
+            </div>
+            <div className="col-4">
                 {products.length>0?(
                     <PaymentB
                         products = {products}
                         setReload = {setReload}
                     />
-
                 ):(
                     <h3>Add Items</h3>
                 )}

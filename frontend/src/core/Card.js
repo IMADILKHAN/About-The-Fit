@@ -35,7 +35,7 @@ export default function Card({
             <div className="product-card">
                 <img src={product.image} width={250} height={250} className="product-image"/>
                 <p className="product-name">{product.name}</p>
-                <p className="product-price">{product.price}</p>
+                <p className="product-price">Rs:{product.price}</p>
             </div>
             </Link>
 

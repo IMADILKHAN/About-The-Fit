@@ -94,7 +94,7 @@ export default function ProductDetails(productId){
                         <h3>Quantity:</h3>
                         <p className="quantity-desc">
                             <span className="minus" onClick=" "><AiOutlineMinus/></span>
-                            <span className="num" onClick=" ">0</span>
+                            <span className="num" onClick=" ">1</span>
                             <span className="plus" onClick=" "><AiOutlinePlus/></span>
                         </p>
                     </div>
