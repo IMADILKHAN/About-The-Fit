@@ -48,15 +48,7 @@ $ pipenv install -r requirements.txt
 
 Here you can find all existing endpoints, which methods can be used, how to work with them & example responses you´ll get.
 
-Additionally, common pitfalls & error messages are explained, if applicable.
 
-### Base URL
-
-**_https://artist-capstone-fsnd-matthew.herokuapp.com_**
-
-### Authentification
-
-Please see [API Authentification](#authentification-bearer)
 
 ### Available Endpoints
 
